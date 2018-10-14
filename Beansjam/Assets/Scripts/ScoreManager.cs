@@ -47,27 +47,27 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreDifference == 0)
         {
-            zeiger.transform.position = new Vector3(0, 3);
+            zeiger.transform.position = new Vector3(0, 3.5f);
         }
 
         if (scoreDifference > 0 && scoreDifference <= 50)
         {
-            zeiger.transform.position = new Vector3(1, 3);
+            zeiger.transform.position = new Vector3(1, 3.5f);
         }
 
         if (scoreDifference > 50)
         {
-            zeiger.transform.position = new Vector3(1.9f, 3);
+            zeiger.transform.position = new Vector3(1.9f, 3.5f);
         }
 
         if (scoreDifference < 0 && scoreDifference >= -50)
         {
-            zeiger.transform.position = new Vector3(-1, 3);
+            zeiger.transform.position = new Vector3(-1, 3.5f);
         }
 
         if (scoreDifference < -50)
         {
-            zeiger.transform.position = new Vector3(-1.9f, 3);
+            zeiger.transform.position = new Vector3(-1.9f, 3.5f);
         }
     }
 }
