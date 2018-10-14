@@ -3,14 +3,14 @@ using Random = UnityEngine.Random;
 
 public class SpawnController : MonoBehaviour
 {
-    private float LeftXMinPosition = -7.5f;
-    private float LeftXMaxPosition = -3.5f;
+    private const float LeftXMinPosition = -7.5f;
+    private const float LeftXMaxPosition = -3.5f;
 
-    private float RightXMinPosition = 3.5f;
-    private float RightXMaxPosition = 7.5f;
+    private const float RightXMinPosition = 3.5f;
+    private const float RightXMaxPosition = 7.5f;
 
-    private float MinYPosition = -4.1f;
-    private float MaxYPosition = 4.1f;
+    private const float MinYPosition = -4.1f;
+    private const float MaxYPosition = 4.1f;
 
     public float SpawnMinRange = 1f;
     public float SpawnMaxRange = 2f;
@@ -24,11 +24,26 @@ public class SpawnController : MonoBehaviour
 
     private void Spawn()
     {
-        var positionVectorLeft = new Vector3(Random.Range(LeftXMinPosition, LeftXMaxPosition), Random.Range(MinYPosition, MaxYPosition));
-        var positionVectorRight = new Vector3(Random.Range(RightXMinPosition, RightXMaxPosition), Random.Range(MinYPosition, MaxYPosition));
+        SpawnAtRandomPosition(LeftXMinPosition, LeftXMaxPosition, MinYPosition, MaxYPosition);
+        SpawnAtRandomPosition(RightXMinPosition, RightXMaxPosition, MinYPosition, MaxYPosition);
 
-        Instantiate(Zuckerwatte, positionVectorLeft, Quaternion.identity);
-        Instantiate(Zuckerwatte, positionVectorRight, Quaternion.identity);
         Invoke("Spawn", Random.Range(SpawnMinRange, SpawnMaxRange));
+    }
+
+    private void SpawnAtRandomPosition(float xMin, float xMax, float yMin, float yMax)
+    {
+        var spawnPoint = new Vector3(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+
+        var hitColliders = Physics.OverlapSphere(spawnPoint, 1);
+        if (hitColliders.Length == 0)
+        {
+            // Dieser Platz ist noch frei, wir können also spawnen
+            Instantiate(Zuckerwatte, spawnPoint, Quaternion.identity);
+        }
+        else
+        {
+            // Sonst probieren wir es einfach nochmal
+            SpawnAtRandomPosition(xMin, xMax, yMin, yMax);
+        }
     }
 }

@@ -7,15 +7,24 @@ public class PlayerMovementController : MonoBehaviour
     public string HorizontalAxisName;
     public string VerticalAxisName;
 
+    public bool IsPlayerOne;
+
     public float Speed = 10;
 
-    public Text ScoreText;
-    public int Score;
+    private ScoreManager ScoreManager;
 
     private void Start()
     {
-        Score = 0;
-        UpdateScore();
+        var hintergrund = GameObject.FindGameObjectWithTag("GameController");
+        if (hintergrund != null)
+        {
+            ScoreManager = hintergrund.GetComponent<ScoreManager>();
+        }
+
+        if (ScoreManager == null)
+        {
+            Debug.Log("ScoreManager konnte nicht gefunden werden.");
+        }
     }
 
     private void FixedUpdate()
@@ -30,23 +39,20 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D otherObject)
     {
-        if (otherObject.gameObject.tag == "Collectable")
+        if (otherObject.gameObject.tag != "Collectable")
         {
-            Destroy(otherObject.gameObject);
-            AddScore(10);
+            return;
         }
 
-        Console.WriteLine("Test");
-    }
+        Destroy(otherObject.gameObject);
 
-    private void AddScore(int newScoreValue)
-    {
-        Score += newScoreValue;
-        UpdateScore();
-    }
-
-    private void UpdateScore()
-    {
-        ScoreText.text = "Punkte: " + Score;
+        if (IsPlayerOne)
+        {
+            ScoreManager.UpdatePlayer1Score(10);
+        }
+        else
+        {
+            ScoreManager.UpdatePlayer2Score(10);
+        }
     }
 }
