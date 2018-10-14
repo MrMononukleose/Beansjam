@@ -1576,7 +1576,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4899224508773308, guid: fe022d4126cd32a4693df42783de9be1, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1389540226116606, guid: fe022d4126cd32a4693df42783de9be1, type: 2}
       propertyPath: m_Name
@@ -1744,7 +1744,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1355669758
 MonoBehaviour:
@@ -1761,6 +1761,10 @@ MonoBehaviour:
   SpawnMaxRange: 2
   Zuckerwatte: {fileID: 1189291569073796, guid: f7262ba2cd34e7c449f46d92d77e24b9,
     type: 2}
+  Zuckerwatte3P: {fileID: 1627435620550782, guid: ffb03723ce8da7e44a6af37619fc4974,
+    type: 2}
+  Kotze: {fileID: 1625854795931520, guid: 07a7d7f699086cf46bc1c30eae2ed0b4, type: 2}
+  Stein: {fileID: 1571070811052636, guid: 7534fd2098df6a8499172433451c3909, type: 2}
 --- !u!114 &1355669759
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -39,20 +39,35 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D otherObject)
     {
-        if (otherObject.gameObject.tag != "Collectable")
+        if (otherObject.gameObject.tag == "Wall")
         {
             return;
         }
 
         Destroy(otherObject.gameObject);
 
+        var scoreToAdd = 0;
+
+        switch (otherObject.gameObject.tag)
+        {
+            case "CollectableZuckerwatte":
+                scoreToAdd = 1;
+                break;
+            case "CollectableZuckerwatte3P":
+                scoreToAdd = 3;
+                break;
+            case "CollectableKotze":
+                scoreToAdd = -2;
+                break;
+        }
+
         if (IsPlayerOne)
         {
-            ScoreManager.UpdatePlayer1Score(10);
+            ScoreManager.UpdatePlayer1Score(scoreToAdd);
         }
         else
         {
-            ScoreManager.UpdatePlayer2Score(10);
+            ScoreManager.UpdatePlayer2Score(scoreToAdd);
         }
     }
 }

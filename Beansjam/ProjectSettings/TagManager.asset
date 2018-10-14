@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Collectable
   - Wall
   - Zeiger
+  - CollectableZuckerwatte
+  - CollectableZuckerwatte3P
+  - CollectableKotze
   layers:
   - Default
   - TransparentFX
