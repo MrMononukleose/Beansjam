@@ -34,16 +34,16 @@ public class SpawnController : MonoBehaviour
     {
         var spawnPoint = new Vector3(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
 
-        var hitColliders = Physics.OverlapSphere(spawnPoint, 1);
-        if (hitColliders.Length == 0)
+        var hitColliders = Physics.OverlapSphere(spawnPoint, 20);
+        if (hitColliders.Length > 0)
         {
-            // Dieser Platz ist noch frei, wir können also spawnen
-            Instantiate(Zuckerwatte, spawnPoint, Quaternion.identity);
+            // Dieser Platz ist nicht frei, nochmal probieren
+            SpawnAtRandomPosition(xMin, xMax, yMin, yMax);
         }
         else
         {
-            // Sonst probieren wir es einfach nochmal
-            SpawnAtRandomPosition(xMin, xMax, yMin, yMax);
+            // Platz ist frei, wir spawnen
+            Instantiate(Zuckerwatte, spawnPoint, Quaternion.identity);
         }
     }
 }

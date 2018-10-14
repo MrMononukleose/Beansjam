@@ -9,7 +9,7 @@ public class PlayerMovementController : MonoBehaviour
 
     public bool IsPlayerOne;
 
-    public float Speed = 10;
+    public float Speed = 5;
 
     private ScoreManager ScoreManager;
 
