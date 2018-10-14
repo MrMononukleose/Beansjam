@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -63,6 +64,8 @@ public class ScoreManager : MonoBehaviour
         if (scoreDifference > 10)
         {
             zeiger.transform.position = new Vector3(2.1f, 3.5f);
+
+            GoToEndscreen();
         }
 
         if (scoreDifference < 0 && scoreDifference >= -5)
@@ -78,6 +81,17 @@ public class ScoreManager : MonoBehaviour
         if (scoreDifference < -10)
         {
             zeiger.transform.position = new Vector3(-2.1f, 3.5f);
+
+            GoToEndscreen();
         }
+    }
+
+    private void GoToEndscreen()
+    {
+        ResultProvider.Player1Result = player1Score;
+        ResultProvider.Player2Result = player2Score;
+
+        var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 }

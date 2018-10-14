@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: 5dee9c6079408434f9189c2ef8361357
   - enabled: 1
+    path: "Assets/Scenes/Erkl\xE4rBildschirm.unity"
+    guid: de8cc7a747a6dcc41ab0190b11116adf
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: 27f31c34ce0e8e14b887067e3dea8d85
   m_configObjects: {}
